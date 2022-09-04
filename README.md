@@ -1,4 +1,4 @@
-# Desafio-1-JavaScript
-Tomando como base los ejemplos de la estructura for, while y do...while, logre simular un "logeo de cuenta" utilizando unicamente lo que se pide en la consigna
+# Desafio-2-JavaScript
+Con los conocimientos vistos hasta el momento, empecé a armar la estructura inicial de tu proyecto integrador.
 
-Preview del sitio: https://lucasdxvid.github.io/Desafio-1-JavaScript/
+Preview del sitio: https://lucasdxvid.github.io/Desafio/
