@@ -94,7 +94,7 @@ const seleccionPlan = () => {
             plan = 4
             break;
         default:
-            alert("La opción elegida no existe \n Recarga la página e intentalo nuevamente (CTRL + R)")
+            alert("Vaya, parece que no seleccionaste ningun plan. \n Te asignaremos una cuenta free \n (Puedes cambiar de plan en cualquier momento) \n El precio sin impuestos es de: 0 AR$")
             plan = 0
     };
 
