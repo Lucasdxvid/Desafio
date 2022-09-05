@@ -1,6 +1,6 @@
 // Paso 0: Bienvenida a la página
 
-const REQUEST_1 = alert("¡Bienvenido a eMovies! El mejor foro de películas \n Ingresa tus datos para poder acceder a esta gran comunidad");
+const REQUEST_1 = alert("¡Bienvenido a eMovies! El mejor foro de películas \n Completa los siguientes pasos para poder acceder a esta gran comunidad");
 
 // Paso 1: Registro de Cuenta
 
