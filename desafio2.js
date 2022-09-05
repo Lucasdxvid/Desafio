@@ -33,6 +33,7 @@ const PASSWORD = () => {
             alert("La contraseña ingresada es incorrecta, vuelve a intentarlo")
         }
     } while (key != NEW_PASSWORD) {
+        alert("La contraseña ingresada es correcta")
         alert("Todos los datos ingresados son correctos" + "\n ¡Bienvenido " + user + "!")
     }
 };
