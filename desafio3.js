@@ -11,7 +11,7 @@ class Movies {
 // Paso 2: Creamos un switch el cual sera llamado a la hora de utilizar el "molde" para crear peliculas
 
 const SELECT_GENRE = () => {
-    let movGenre = parseInt(prompt("Elige el género de la película: \n 0. Terror \n 1. Romance \n 2. Suspenso \n 3. Comedia  \n 4. Acción"))
+    let movGenre = parseInt(prompt("Elige el género de la película: \n 0. Terror \n 1. Romance \n 2. Suspenso \n 3. Comedia  \n 4. Acción \n 5. Otro"))
     switch (movGenre) {
         case 0:
             alert("Seleccionaste el género Terror")
