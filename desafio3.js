@@ -38,10 +38,11 @@ const SELECT_GENRE = () => {
             movGenre = "Otro"
             break;
         default:
-            while (SELECT_GENRE < 0 || SELECT_GENRE > 5 || SELECT_GENRE !== Number(SELECT_GENRE)) {
+            if (SELECT_GENRE < 0 || SELECT_GENRE > 5 || SELECT_GENRE !== Number(SELECT_GENRE)) {
                 alert("El género elegido no se encuentra registrado en la lista")
-                movGenre = parseInt(prompt("Elige el género de la película: \n 0. Terror \n 1. Romance \n 2. Suspenso \n 3. Comedia  \n 4. Acción"))
+                movGenre = SELECT_GENRE()
             }
+
     }
 
     return movGenre
@@ -60,6 +61,10 @@ function newMovies() {
 
     for (let index = 0; index < nroMovies; index++) {
         let name = prompt("¿Cual es el nombre de la película?");
+        while (name == "") {
+            alert("El nombre debe conter por lo menos una letra o número");
+            name = prompt("¿Cual es el nombre de la película?");
+        }
         let genre = SELECT_GENRE();
         let rating = parseFloat(prompt("Califica esta película del 1-10"));
 
