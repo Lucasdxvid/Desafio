@@ -38,7 +38,7 @@ const SELECT_GENRE = () => {
             movGenre = "Otro"
             break;
         default:
-            while (SELECT_GENRE < 0 || SELECT_GENRE > 5) {
+            while (SELECT_GENRE < 0 || SELECT_GENRE > 5 || SELECT_GENRE !== Number(SELECT_GENRE)) {
                 alert("El género elegido no se encuentra registrado en la lista")
                 movGenre = parseInt(prompt("Elige el género de la película: \n 0. Terror \n 1. Romance \n 2. Suspenso \n 3. Comedia  \n 4. Acción"))
             }
