@@ -1,4 +1,4 @@
-# Desafio-2-JavaScript
-Con los conocimientos vistos hasta el momento, empecé a armar la estructura inicial de tu proyecto integrador.
+# Desafio-3-JavaScript
+Con los conocimientos vistos hasta el momento, incorpore un array que me permite añadir películas.
 
 Preview del sitio: https://lucasdxvid.github.io/Desafio/
