@@ -128,7 +128,7 @@ const SELECT_GENRE = () => {
             break;
         case 10:
             alert("Seleccionaste el género Otro")
-            movGenre = "Otro"
+            movGenre = "Otro" // Tambien se crea el genero "Otro" si es que el que se busca no se encuentra listado
             break;
         default:
             if (SELECT_GENRE < 0 || SELECT_GENRE > 11 || SELECT_GENRE !== Number(SELECT_GENRE)) { //Si no se cumplen las demas condiciones se usara el "default"
