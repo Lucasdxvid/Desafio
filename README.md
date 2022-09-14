@@ -1,4 +1,5 @@
-# Desafio-3-JavaScript
-Con los conocimientos vistos hasta el momento, incorpore un array que me permite añadir películas.
+# 1RA-ENTREGA-DEL-PROYECTO-FINAL-JavaScript
+
+Con los conocimientos vistos hasta el momento, incorpore lo necesario para completar el desafio.
 
 Preview del sitio: https://lucasdxvid.github.io/Desafio/
