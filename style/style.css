@@ -1,0 +1,85 @@
+@import "https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap";
+
+/* General */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Main */
+
+.main {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+
+/* Card Section */
+
+.sectionContainer {
+    background: linear-gradient(180deg, #19366b 20%, #148181 80%);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mainTitle {
+    text-align: center;
+    font-size: 2em;
+    color: white;
+    text-shadow: -1px 0 black, 0 5px black, 1px 0 black, 0 -1px black;
+    margin-bottom: 2%;
+}
+
+.secondTitle {
+    text-align: center;
+    font-size: 1.7em;
+    text-shadow: -1px 0 black, 1 5px black, 1px 0 black, 0 -1px black;
+    color: white;
+    width: 100%;
+    text-decoration: underline;
+}
+
+/* Card Creator (JS DOM) */
+
+#movieContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 50%;
+}
+
+.movieCard {
+    display: flex;
+    flex-flow: column wrap;
+    border: 2px solid rgba(32, 31, 31, 0.274);
+    background: linear-gradient(180deg, #280655 20%, #148181 80%);
+    margin: 1%;
+    text-align: center;
+    width: 20em;
+}
+
+.movieTitle {
+    font-size: 1.4em;
+    color: white;
+    text-shadow: -1px 0 black, 0 5px black, 1px 0 black, 0 -1px black;
+    border-bottom: 2px solid rgba(32, 31, 31, 0.274);
+    background: linear-gradient(120deg, #4815be 30%, #148181 100%);
+}
+
+.movieText {
+    font-size: 1.1em;
+    margin: 2%;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-transform: capitalize;
+}
+
+.movieTextBold {
+    color: red;
+}
