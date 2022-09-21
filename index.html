@@ -5,7 +5,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Desafío 5: DOM</title>
+    <title>Desafío 6: EVENTOS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <link rel="stylesheet" href="style/style.css">
 </head>
 
@@ -15,6 +17,42 @@
     <main class="main">
         <section class="sectionContainer">
             <h1 class="mainTitle">Creando películas con DOM</h1>
+            <form id="movieForm"> 
+                <div class="input-group mb-3 inputBorder">
+                    <span class="input-group-text spanBg spanSize inputRad">ID</span>
+                    <input type="number" min="1" max="1000" class="form-control inputRad"
+                        placeholder="Ingresa un número" required id="inputId">
+                </div>
+                <div class="input-group mb-3 inputBorder">
+                    <span class="input-group-text spanBg spanSize inputRad">Título</span>
+                    <input type="text" minlength="2" class="form-control inputRad" placeholder="Nombre de la película"
+                        required id="inputName">
+                </div>
+                <div class="input-group mb-3 inputBorder">
+                    <span class="input-group-text spanBg spanSize inputRad"><i
+                            class="fa-solid fa-mars-and-venus genIco"></i></span>
+                    <select class="form-select inputRad" id="inputGenre">
+                        <option disabled>Elige un género</option>
+                        <option value="Terror">Terror</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Suspenso">Suspenso</option>
+                        <option value="Comedia">Comedia</option>
+                        <option value="Acción">Acción</option>
+                        <option value="Ciencia Ficción">Ciencia Ficción</option>
+                        <option value="Musical">Musical</option>
+                        <option value="Fantasía">Fantasía</option>
+                        <option value="Aventuras">Aventuras</option>
+                    </select>
+                </div>
+                <div class="input-group mb-3 justify-content-center">
+                    <span class="input-group-text spanBg spanSize inputRad">Rating</span>
+                    <input type="range" min="0" max="100" value="0" class="ratingSlider" id="inputRating">
+                    <span class="input-group-text spanBg spanSize inputRad" id="ratingValue">0</span>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary formBtnCreate">Crear</button>
+                </div>
+            </form>
             <h2 class="secondTitle">CARDS CREADAS:</h2>
             <div id="movieContainer">
             </div>
@@ -22,7 +60,12 @@
     </main>
 
     <!-- SCRIPTS -->
-    <script src="desafio5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script src="https://kit.fontawesome.com/4ec5a32e2a.js" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="desafio6.js"></script>
 </body>
 
 </html>
