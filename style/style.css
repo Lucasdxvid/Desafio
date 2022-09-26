@@ -9,6 +9,18 @@
     font-family: 'Poppins', sans-serif;
 }
 
+@keyframes reload {
+    from {
+        opacity: 0;
+        transform: scale(1.1);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 /* Main */
 
 .main {
@@ -16,6 +28,7 @@
     flex-flow: column nowrap;
     justify-content: center;
     background: linear-gradient(180deg, #19366b 20%, #148181 80%);
+    min-height: 100vh;
 }
 
 /* Card Section */
@@ -171,6 +184,9 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .containerUser {
     border-radius: 5px;
+    animation-name: reload;
+    animation-duration: 0.5s;
+    transition: 2s;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     overflow: hidden;
     height: 100vh;
@@ -246,7 +262,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .form button {
     background-color: #1b427c;
-    border: 2px solid #592c8d86;
+    border: 2px solid #3b2c8d86;
     border-radius: 4px;
     color: #fff;
     display: block;
@@ -256,6 +272,6 @@ input[type="search"]::-webkit-search-results-decoration {
     width: 100%;
 }
 
-.hiddeContent{
+.hiddeContent {
     display: none;
 }
