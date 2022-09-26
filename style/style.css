@@ -1,6 +1,6 @@
 @import "https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap";
 
-/* General */
+/*! General */
 
 * {
     margin: 0;
@@ -21,7 +21,11 @@
     }
 }
 
-/* Main */
+body {
+    overflow: hidden; /* Hide scrollbars */
+  }
+
+/*! Main */
 
 .main {
     display: flex;
@@ -31,13 +35,15 @@
     min-height: 100vh;
 }
 
-/* Card Section */
+/** Card Section */
 
 .sectionContainer {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    animation-name: reload;
+    animation-duration: 0.5s;
 }
 
 .mainTitle {
@@ -185,7 +191,7 @@ input[type="search"]::-webkit-search-results-decoration {
 .containerUser {
     border-radius: 5px;
     animation-name: reload;
-    animation-duration: 0.5s;
+    animation-duration: 1s;
     transition: 2s;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     overflow: hidden;
