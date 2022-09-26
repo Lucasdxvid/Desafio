@@ -137,6 +137,8 @@ body {
     margin: 1%;
     text-align: center;
     width: 20em;
+    animation-name: reload;
+    animation-duration: 0.5s;
 }
 
 .movieTitle {

@@ -1,4 +1,4 @@
-// TODO: ================ GENERADOR DE CARDS  ================
+//TODO: ================ GENERADOR DE CARDS  ================
 
 //! [1.0] Declaracion de variables
 
