@@ -10,12 +10,20 @@ let cleanStorage // Nos permitira limpiar todos los nodos / arrays almacenados
 
 let movieArray = []; // Aqui se almacenan las peliculas creadas
 
-//? VARS de autentificación y usuario (Proceso...)
+//? VARS de autentificación y usuario
 
-let userFormIdentification
-let userFormIdentificationContainer
-let userFormContainer
-let userTextInput
+import {
+    check1,
+    check2,
+    check3, // la mayoria de imports se utilizan a partir de la linea 175 aprox
+    check4,
+    check5,
+    check6,
+    registerForm,
+    loginForm,
+    containerUser,
+    restartStorage
+} from "./user.js"
 
 //? VARS de formulario de películas
 
@@ -165,8 +173,16 @@ function getMoviesFromStorage() { //* revertimos la transformacion a string
 //! [1.8] Limpieza de STORAGE
 
 function deleteStorage() { //* La misma nos permite eliminar TODO lo que almacenemos localmente
-    localStorage.clear() // Metodo que nos permitira eliminar nuestro save local
-    movieArray = []
+    localStorage.clear(); // Metodo que nos permitira eliminar nuestro save local
+    movieArray = [];
+
+    if (check1 == true || check2 == true || check3 == true || check4 == true || check5 == true || check6 == true) { // si se cumple la condicion, reseteamos el registro / logeo
+        registerForm.classList.remove("hiddeContent");
+        loginForm.classList.add("hiddeContent");
+        containerUser.classList.remove("hiddeContent");
+        restartStorage(); // llamamos la funcion exportada
+    }
+
     generateMoviesHTML() // Actualizamos el resultado sin tener que recargar manualmente la pagina
 }
 

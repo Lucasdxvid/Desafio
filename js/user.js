@@ -4,27 +4,27 @@
 
 //? Registro
 
-const registerForm = document.getElementById("formRegister");
+export const registerForm = document.getElementById("formRegister");
 const user = document.getElementById("username");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 const password2 = document.getElementById("password2");
 const mainSection = document.getElementById("mainSection");
-const containerUser = document.getElementById("containerUser");
+export const containerUser = document.getElementById("containerUser");
 
-let check1 = false; //Los checks vendran por defecto con un valor booleano "falso"
-let check2 = false;
-let check3 = false;
-let check4 = false;
+export let check1 = false; //Los checks vendran por defecto con un valor booleano "falso"
+export let check2 = false;
+export let check3 = false; //Seran exportados para ser utilizados en main.js
+export let check4 = false;
 
 //? Logeo
 
-const loginForm = document.getElementById("formLogin");
+export const loginForm = document.getElementById("formLogin");
 const validUsername = document.getElementById("validUsername");
 const validPassword = document.getElementById("validPassword");
 
-let check5 = false;
-let check6 = false;
+export let check5 = false;
+export let check6 = false;
 
 //! [1.1] Registro de cuenta
 
@@ -178,6 +178,21 @@ function loginStorageValidation() { //* Validamos que los datos almacenados sean
     }
 }
 
+export function restartStorage() { //*Exportamos esta funcion la cual usaremos en el main.js
+    check1 = false
+    check2 = false
+    check3 = false // Esta funcion consiste en transformar a falso los checks nuevamente y rehacer los formularios al limpiar TODA LA STORAGE
+    check4 = false
+    check5 = false
+    check6 = false
+    setErrorFor(user, "Ingresa un nombre");
+    setErrorFor(email, "Ingresa un email");
+    setErrorFor(password, "Ingresa una contraseña");
+    setErrorFor(password2, "Repite la contraseña");
+    setErrorFor(validUsername, "Ingresa un nombre válido");
+    setErrorFor(validPassword, "Ingresa una contraseña válida");
+}
+
 //! [1.5] Reunion de funciones
 
 function mainUser() { //* Funcion principal
@@ -185,7 +200,6 @@ function mainUser() { //* Funcion principal
     getUserInfoFromStorage(); // LLamamos la funcion que transforma los datos a booleanos nuevamente
     loginStorageValidation(); // Llamos la funcion que ocultara los formularios si los checks son verdaderos despues de ser revertidos (volver a booleano)
 }
-
 
 //! [1.6] Llamada de funcion principal
 
