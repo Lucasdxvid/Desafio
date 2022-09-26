@@ -96,7 +96,7 @@ body {
 }
 
 .formBtnCreate {
-    background-color: rgb(245, 43, 43);
+    background-color: #1b427c;
     width: 5em;
     font-size: 1.3em;
     border: rgba(0, 0, 0, 0.479) solid 1px;
@@ -107,7 +107,7 @@ body {
 
 .formBtnCreate:hover,
 .formBtnCreate:focus {
-    background-color: rgb(139, 6, 6);
+    background-color: #10366e;
     border: solid 1px black;
 }
 
