@@ -5,29 +5,94 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Desafío 6: EVENTOS</title>
+    <title>Desafío</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <link rel="stylesheet" href="style/style.css">
 </head>
 
 <body>
-
-    <!-- MAIN CONTENT -->
     <main class="main">
-        <section class="sectionContainer">
+
+        <section class="containerUser" id="containerUser">
+            <div class="header">
+                <h2 class="secondTitle">Crea tu cuenta</h2>
+            </div>
+            <form id="formRegister" class="form">
+                <div class="form-control">
+                    <label for="username">Usuario</label>
+                    <input type="text" placeholder="Lucasdxvid" id="username" />
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error message</small>
+                </div>
+                <div class="form-control">
+                    <label for="email">Email</label>
+                    <input type="email" placeholder="athl12311@gmail.com" id="email" />
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error message</small>
+                </div>
+                <div class="form-control">
+                    <label for="password">Contraseña</label>
+                    <input type="password" placeholder="********" id="password" />
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error message</small>
+                </div>
+                <div class="form-control">
+                    <label for="password2">Repite tu contraseña</label>
+                    <input type="password" placeholder="********" id="password2" />
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error message</small>
+                </div>
+                <button>Submit</button>
+            </form>
+            <form id="formLogin" class="form hiddeContent">
+                <div class="form-control">
+                    <label for="username">Usuario</label>
+                    <input type="text" placeholder="Lucasdxvid" id="validUsername" />
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error message</small>
+                </div>
+                <div class="form-control">
+                    <label for="password">Contraseña</label>
+                    <input type="password" placeholder="********" id="validPassword" />
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error message</small>
+                </div>
+                <button>Submit</button>
+            </form>
+        </section>
+
+        <!-- !MAIN CONTENT -->
+
+        <section class="sectionContainer hiddeContent" id="mainSection">
+            <div class="align-self-start m-3">
+                <button class="btn btn-warning" id="cleanStorage">Reestablecer</button>
+            </div>
+
+            <!-- *Formulario PELICULAS -->
+
             <h1 class="mainTitle">Creando películas con DOM</h1>
-            <form id="movieForm"> 
+
+            <form id="movieForm">
+                <!-- Input ID -->
                 <div class="input-group mb-3 inputBorder">
                     <span class="input-group-text spanBg spanSize inputRad">ID</span>
                     <input type="number" min="1" max="1000" class="form-control inputRad"
                         placeholder="Ingresa un número" required id="inputId">
                 </div>
+                <!-- Input TITULO -->
                 <div class="input-group mb-3 inputBorder">
                     <span class="input-group-text spanBg spanSize inputRad">Título</span>
                     <input type="text" minlength="2" class="form-control inputRad" placeholder="Nombre de la película"
                         required id="inputName">
                 </div>
+                <!-- Input GENERO -->
                 <div class="input-group mb-3 inputBorder">
                     <span class="input-group-text spanBg spanSize inputRad"><i
                             class="fa-solid fa-mars-and-venus genIco"></i></span>
@@ -44,28 +109,41 @@
                         <option value="Aventuras">Aventuras</option>
                     </select>
                 </div>
+                <!-- Input RATING -->
                 <div class="input-group mb-3 justify-content-center">
                     <span class="input-group-text spanBg spanSize inputRad">Rating</span>
                     <input type="range" min="0" max="100" value="0" class="ratingSlider" id="inputRating">
                     <span class="input-group-text spanBg spanSize inputRad" id="ratingValue">0</span>
                 </div>
+                <!-- Boton SUBMIT - RESTART -->
                 <div class="mb-3">
                     <button type="submit" class="btn btn-primary formBtnCreate">Crear</button>
+                    <button type="reset" class="btn btn-primary formBtnCreate"><i
+                            class="fa-regular fa-ban"></i></button>
                 </div>
             </form>
-            <h2 class="secondTitle">CARDS CREADAS:</h2>
-            <div id="movieContainer">
+            <hr>
+            <!-- Filtro BUSQUEDA (CARDS) -->
+            <div class="d-flex justify-content flex-column mb-3">
+                <h3 class="secondTitle">Filtro de busqueda</h3>
+                <input type="search" placeholder="Buscar..." class="card-filter form-control">
+                <div class="messageFilter"></div>
             </div>
+            <hr>
+            <!-- Preview CARDS -->
+            <h2 class="secondTitle">CARDS CREADAS:</h2>
+            <div id="movieContainer"> </div>
         </section>
     </main>
 
-    <!-- SCRIPTS -->
+    <!-- !SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <script src="https://kit.fontawesome.com/4ec5a32e2a.js" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="desafio6.js"></script>
+    <script src="main.js"></script>
+    <script src="filtro.js"></script>
 </body>
 
 </html>

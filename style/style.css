@@ -13,16 +13,15 @@
 
 .main {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
     justify-content: center;
+    background: linear-gradient(180deg, #19366b 20%, #148181 80%);
 }
 
 /* Card Section */
 
 .sectionContainer {
-    background: linear-gradient(180deg, #19366b 20%, #148181 80%);
     width: 100%;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -42,7 +41,6 @@
     text-shadow: -1px 0 black, 1 5px black, 1px 0 black, 0 -1px black;
     color: white;
     width: 100%;
-    text-decoration: underline;
 }
 
 /* Form */
@@ -140,4 +138,124 @@
 
 .movieTextBold {
     color: red;
+}
+
+/*! Filtro */
+
+.filter {
+    display: none;
+}
+
+/* clears the ‘X’ from Internet Explorer */
+input[type=search]::-ms-clear {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+input[type=search]::-ms-reveal {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+/* clears the ‘X’ from Chrome */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+    display: none;
+}
+
+/* !Login */
+
+.containerUser {
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+    border-bottom: 1px solid #f0f0f0;
+    padding: 20px 40px;
+}
+
+.header h2 {
+    margin: 0;
+}
+
+.form {
+    padding: 30px 40px;
+    width: 50%;
+}
+
+.form-control label {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.form-control input {
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    display: block;
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+}
+
+.form-control input:focus {
+    outline: 0;
+    border-color: #777;
+}
+
+.form-control.success input {
+    border-color: #2ecc71;
+}
+
+.form-control.error input {
+    border-color: #e74c3c;
+}
+
+.form-control i {
+    visibility: hidden;
+}
+
+.form-control.success i.fa-check-circle {
+    color: #2ecc71;
+    visibility: visible;
+}
+
+.form-control.error i.fa-exclamation-circle {
+    color: #e74c3c;
+    visibility: visible;
+}
+
+.form-control small {
+    color: #e74c3c;
+    visibility: hidden;
+}
+
+.form-control.error small {
+    visibility: visible;
+}
+
+.form button {
+    background-color: #1b427c;
+    border: 2px solid #592c8d86;
+    border-radius: 4px;
+    color: #fff;
+    display: block;
+    font-size: 16px;
+    padding: 10px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.hiddeContent{
+    display: none;
 }
