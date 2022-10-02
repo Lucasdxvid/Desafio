@@ -3,7 +3,6 @@
 //! [1.0] Declaraciones
 
 const d = document;
-let mainContainer = document.querySelector(".mainTitle")
 
 //! [1.1] Creacion del filtro
 
@@ -12,11 +11,9 @@ function searchFilter(input, selector) { //* La funcion nos pide 2 parametros, 1
     d.addEventListener("keyup", (e) => { // El key up (evento de teclado) es cuando escribimos la primera letra por lo que delegamos la funcion al mismo
         if (e.target.matches(input)) { // Esto hace que si el objeto que origino el evento, su selector(parametro 1) coincide con lo que viene en la variable input, entonces...
             console.log(e.target.value); // imprime el VALOR (lo que escribimos)
-            mainContainer.classList.add('filter');
 
-            if (e.key === "Escape" || e.target.value.length <= 7) { // Reiniciamos el valor al tocar la tecla ESC
+            if (e.key === "Escape" || e.target.value.length <= 8) { // Reiniciamos el valor al tocar la tecla ESC
                 e.target.value = "Nombre: ";
-                mainContainer.classList.remove('filter');
             }
             //Lo de abajo basicamente coniste en recorrer el contenido (strings) que poseea la película, las películas/cards que coincidan con los datos tipeados se mantendran mientras que las que no coincidad se les añade la clase "filter" que le agrega un display none a la card
             d.querySelectorAll(selector).forEach((el) => {
@@ -28,7 +25,7 @@ function searchFilter(input, selector) { //* La funcion nos pide 2 parametros, 1
 
 //! [1.2] Llamando al filtro
 
-// llamamos la funcion colocando 1. el input que busca 2. las cards que se filtran
+searchFilter(".card-filter", ".movieCard"); // llamamos la funcion colocando 1. el input que busca 2. las cards que se filtran
 
 
 //todo: aaa
@@ -99,5 +96,4 @@ function filterItem(inputCheck, genre, label) {
     }
 };
 
-searchFilter(".card-filter", ".movieCard");
 filterEvents();

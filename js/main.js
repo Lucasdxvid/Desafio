@@ -33,7 +33,6 @@ let inputName;
 let inputGenre; // Al declarar las variables de manera global puedo hacer referencias de funciones en otras
 let inputRating;
 let movieContainer;
-let secondMovieContainer;
 let outpout; // Slider y Output son variables del input range
 let slider;
 
@@ -60,7 +59,6 @@ function startElements() { //* inicializamos todos los elementos para utilizarse
     inputGenre = document.getElementById("inputGenre");
     inputRating = document.getElementById("inputRating")
     movieContainer = document.getElementById("movieContainer");
-    secondMovieContainer = document.getElementById("secondMovieContainer");
     outpout = document.getElementById("ratingValue");
 
     //? Storage
@@ -168,6 +166,7 @@ function generateMoviesHTML() {
              `; //definimos el cuerpo que tendra la card
 
         movieContainer.append(mCard); // El APPEND nos permitira insertar nuevos elementos / nodos a uno existente similar a un PUSH
+
 
         let delButtom = document.getElementById(`delButtom-${movieCreated.id}`); // Creamos la funcion que sirve para borrar cards dentro de OTRA y no por fuera ya que el mismo se crea dinamicamente al crearse el boton y antes no existe
         delButtom.onclick = () => removeMovie(movieCreated.id); //llamamos a una funcion creada arriba pasandole como parametro lo que queremos borrar
