@@ -4,7 +4,7 @@
 
 //? VARS Globales
 
-let cleanStorage // Nos permitira limpiar todos los nodos / arrays almacenados
+let cleanStorage; // Nos permitira limpiar todos los nodos / arrays almacenados
 
 //? VARS de información (Arrays - etc.)
 
@@ -33,8 +33,9 @@ let inputName;
 let inputGenre; // Al declarar las variables de manera global puedo hacer referencias de funciones en otras
 let inputRating;
 let movieContainer;
-let outpout // Slider y Output son variables del input range
-let slider
+let secondMovieContainer;
+let outpout; // Slider y Output son variables del input range
+let slider;
 
 //! [1.1] Constructor de películas (codigo)
 
@@ -59,11 +60,12 @@ function startElements() { //* inicializamos todos los elementos para utilizarse
     inputGenre = document.getElementById("inputGenre");
     inputRating = document.getElementById("inputRating")
     movieContainer = document.getElementById("movieContainer");
+    secondMovieContainer = document.getElementById("secondMovieContainer");
     outpout = document.getElementById("ratingValue");
 
     //? Storage
 
-    cleanStorage = document.getElementById("cleanStorage")
+    cleanStorage = document.getElementById("cleanStorage");
 
     //? USER REGISTER / LOGIN (Proceso...) 
 }
@@ -133,8 +135,28 @@ function removeMovie(movieId) { //* creamos la funcion que nos permitira borrar 
 function generateMoviesHTML() {
     movieContainer.innerHTML = ""; // Al crear una película y luego otra por default va a volver el producto anteriormente creado + el nuevo es por eso que el innerHTML reemplazara al mismo evitando crear 2 veces lo mismo que ademas es donde llamaremos a crear las cards en el HTML
     movieArray.forEach((movieCreated) => { // vamos a recibir una película
-        let mCard = document.createElement("div"); // usamos la propiedad createElement para crear un div
-        mCard.className = "movieCard"; // el mismo va a poseer la clase movieCard la cual ya esta definida en CSS
+        let mCard = document.createElement("figure"); // usamos la propiedad createElement para crear una figure
+
+        if (movieCreated.genre === "Terror") { // el mismo va a poseer la clase movieCard la cual ya esta definida en CSS
+            mCard.className = "movieCard horrorCard"
+        } else if (movieCreated.genre === "Romance") {
+            mCard.className = "movieCard romanceCard"
+        } else if (movieCreated.genre === "Suspenso") {
+            mCard.className = "movieCard suspenseCard"
+        } else if (movieCreated.genre === "Comedia") {
+            mCard.className = "movieCard comedyCard"
+        } else if (movieCreated.genre === "Acción") {
+            mCard.className = "movieCard actionCard"
+        } else if (movieCreated.genre === "Ciencia Ficción") {
+            mCard.className = "movieCard scienceFictionCard"
+        } else if (movieCreated.genre === "Musical") {
+            mCard.className = "movieCard musicalCard"
+        } else if (movieCreated.genre === "Fantasía") {
+            mCard.className = "movieCard fantasyCard"
+        } else if (movieCreated.genre === "Aventuras") {
+            mCard.className = "movieCard adventureCard"
+        }
+
         mCard.id = `movieCard-${movieCreated.id}`; // tambien le asignaremos una ID la cual servira de referencia a la hora de ELIMINAR cards con otra funcion que recibira como nombre una ID ennumerada
         mCard.innerHTML = `
                 <h3 class="movieTitle">Película</h3>
@@ -183,7 +205,7 @@ function deleteStorage() { //* La misma nos permite eliminar TODO lo que almacen
         restartStorage(); // llamamos la funcion exportada
     }
 
-    generateMoviesHTML() // Actualizamos el resultado sin tener que recargar manualmente la pagina
+    generateMoviesHTML(); // Actualizamos el resultado sin tener que recargar manualmente la pagina
 }
 
 //! [1.9] Punto de encuentro de las funciones

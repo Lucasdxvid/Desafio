@@ -7,6 +7,8 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    list-style: none;
 }
 
 @keyframes reload {
@@ -21,9 +23,18 @@
     }
 }
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
 body {
-    overflow: hidden; /* Hide scrollbars */
-  }
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
 
 /*! Main */
 
@@ -288,4 +299,27 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .hiddeContent {
     display: none;
+}
+
+/*! Otro */
+
+.guiaCatUl {
+    display: flex;
+    background: linear-gradient(352deg, #1550be 20%, #300d81 80%);
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 20em;
+    margin-bottom: 1%;
+    border-radius: 8px;
+}
+
+.checkFilter,
+.uncheckFilter {
+    color: white;
+    font-size: 1em;
+    margin: 1%;
+}
+
+.uncheckFilter {
+    color: black;
 }
