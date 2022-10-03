@@ -167,7 +167,7 @@ function generateMoviesHTML() {
                 <p class="movieText">Nombre: <b class="movieTextBold">${movieCreated.name}</b></p>
                 <p class="movieText">Género: <b class="movieTextBold">${movieCreated.genre}</b></p>
                 <p class="movieText">Rating: <b class="movieTextBold">${movieCreated.rating}</b></p>
-            <div class="card-footer"> <button class="btn btn-danger" id="delButtom-${movieCreated.id}" >Eliminar</button></div>
+            <div class="card-footer"> <button class="btn btn-danger formBtnCreate" id="delButtom-${movieCreated.id}" >Eliminar</button></div>
              `; //definimos el cuerpo que tendra la card
 
         movieContainer.append(mCard); // El APPEND nos permitira insertar nuevos elementos / nodos a uno existente similar a un PUSH
