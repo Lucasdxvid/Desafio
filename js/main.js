@@ -135,13 +135,13 @@ function generateMoviesHTML() {
     movieArray.forEach((movieCreated) => { // vamos a recibir una película
         let mCard = document.createElement("figure"); // usamos la propiedad createElement para crear una figure
 
-        if (movieCreated.genre === "Terror") { // el mismo va a poseer la clase movieCard la cual ya esta definida en CSS
+        if (movieCreated.genre === "Terror") { // al crear obtendremos 2 clases, 1ra es global "movieCard" la cual da estilo a TODAS
             mCard.className = "movieCard horrorCard"
-        } else if (movieCreated.genre === "Romance") {
+        } else if (movieCreated.genre === "Romance") { // la segunda clase es exclusiva de cada card de acuerdo a que valor en el select de "genero" 
             mCard.className = "movieCard romanceCard"
         } else if (movieCreated.genre === "Suspenso") {
             mCard.className = "movieCard suspenseCard"
-        } else if (movieCreated.genre === "Comedia") {
+        } else if (movieCreated.genre === "Comedia") { // Esta clase secundaria "exclusiva" nos serviran para crear filtros más adelante
             mCard.className = "movieCard comedyCard"
         } else if (movieCreated.genre === "Acción") {
             mCard.className = "movieCard actionCard"
