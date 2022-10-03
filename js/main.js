@@ -32,7 +32,7 @@ let inputId;
 let inputName;
 let inputGenre; // Al declarar las variables de manera global puedo hacer referencias de funciones en otras
 let inputRating;
-let inputImage
+let inputImage;
 let movieContainer;
 let outpout; // Slider y Output son variables del input range
 let slider;
@@ -78,7 +78,7 @@ function startEvents() { //* inicializamos eventos a utilizar
     //? FORM
 
     movieForm.onsubmit = (event) => formValidation(event);
-    cleanStorage.onclick = deleteStorage
+    cleanStorage.onclick = deleteStorage;
 
     slider = document.getElementById("inputRating").oninput = function () { // El evento "oninput" se ejecuta cuando un usuario escriba algo en un campo <input>
         outpout.innerHTML = this.value; // El valor generado en el input de tipo "rango" se vera reflejado visualmente en el span ya que la prop. InnerHTML nos permitira modificar el codigo del elemento HTML
