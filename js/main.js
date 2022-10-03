@@ -32,6 +32,7 @@ let inputId;
 let inputName;
 let inputGenre; // Al declarar las variables de manera global puedo hacer referencias de funciones en otras
 let inputRating;
+let inputImage
 let movieContainer;
 let outpout; // Slider y Output son variables del input range
 let slider;
@@ -39,11 +40,12 @@ let slider;
 //! [1.1] Constructor de películas (codigo)
 
 class MovieBuilder { //* Clase constructora utilizada a la hora de crear películas
-    constructor(id, name, genre, rating) {
+    constructor(id, name, genre, rating, image) {
         this.id = id;
         this.name = name.toLowerCase();
         this.genre = genre;
         this.rating = rating;
+        this.image = image;
     }
 }
 
@@ -57,7 +59,8 @@ function startElements() { //* inicializamos todos los elementos para utilizarse
     inputId = document.getElementById("inputId");
     inputName = document.getElementById("inputName");
     inputGenre = document.getElementById("inputGenre");
-    inputRating = document.getElementById("inputRating")
+    inputRating = document.getElementById("inputRating");
+    inputImage = document.getElementById("inputImage");
     movieContainer = document.getElementById("movieContainer");
     outpout = document.getElementById("ratingValue");
 
@@ -90,12 +93,13 @@ function formValidation(event) { //* creamos una funcion la cual nos sirve para 
     let movieName = inputName.value; // de cada input necesitamos sacar su valor
     let movieGenre = inputGenre.value;
     let movieRating = parseFloat(inputRating.value);
+    let movieImage = inputImage.value;
 
     const idExist = movieArray.some((movieCreated) => movieCreated.id === movieId);
     const nameExist = movieArray.some((movieCreated) => movieCreated.name === movieName);
 
     if (!idExist && !nameExist) { // si la ID no se repite estariamos cumpliendo con la condicion para poder crear la card
-        let movieCreated = new MovieBuilder(movieId, movieName, movieGenre, movieRating);
+        let movieCreated = new MovieBuilder(movieId, movieName, movieGenre, movieRating, movieImage);
 
         movieArray.push(movieCreated); // pusheamos el array a crear utilizando la variable - array "movieArray" que creamos en la linea 3
         movieForm.reset(); // Al darle a SUBMIT el formulario no se limpia, con este METODO logramos que el mismo de RESETEE
@@ -158,6 +162,7 @@ function generateMoviesHTML() {
         mCard.id = `movieCard-${movieCreated.id}`; // tambien le asignaremos una ID la cual servira de referencia a la hora de ELIMINAR cards con otra funcion que recibira como nombre una ID ennumerada
         mCard.innerHTML = `
                 <h3 class="movieTitle">Película</h3>
+                <img src="${movieCreated.image}" alt="película" class="imgCard">
                 <p class="movieText">ID: <b class="movieTextBold">${movieCreated.id}</b></p>
                 <p class="movieText">Nombre: <b class="movieTextBold">${movieCreated.name}</b></p>
                 <p class="movieText">Género: <b class="movieTextBold">${movieCreated.genre}</b></p>
@@ -166,8 +171,6 @@ function generateMoviesHTML() {
              `; //definimos el cuerpo que tendra la card
 
         movieContainer.append(mCard); // El APPEND nos permitira insertar nuevos elementos / nodos a uno existente similar a un PUSH
-
-
         let delButtom = document.getElementById(`delButtom-${movieCreated.id}`); // Creamos la funcion que sirve para borrar cards dentro de OTRA y no por fuera ya que el mismo se crea dinamicamente al crearse el boton y antes no existe
         delButtom.onclick = () => removeMovie(movieCreated.id); //llamamos a una funcion creada arriba pasandole como parametro lo que queremos borrar
     });
