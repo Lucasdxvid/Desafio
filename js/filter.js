@@ -18,7 +18,7 @@ function searchFilter(input, selector) { //* La funcion nos pide 2 parametros, 1
             }
             //Lo de abajo basicamente coniste en recorrer el contenido (strings) que poseea la película, las películas/cards que coincidan con los datos tipeados se mantendran mientras que las que no coincidad se les añade la clase "filter" que le agrega un display none a la card
             d.querySelectorAll(selector).forEach((el) => {
-                el.textContent.toLowerCase().includes(e.target.value.toLowerCase()) ? el.classList.remove("filter") : el.classList.add("filter");
+                el.textContent.toLowerCase().includes(e.target.value.toLowerCase()) ? el.classList.remove("filter") : el.classList.add("filter"); // implementamos condiciones a traves de un operador ternario
             });
         }
     });
