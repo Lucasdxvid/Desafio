@@ -211,19 +211,37 @@ function generateMoviesHTML() {
         movieContainer.append(mCard); // El APPEND nos permitira insertar nuevos elementos / nodos a uno existente similar a un PUSH
         let delButtom = document.getElementById(`delButtom-${movieCreated.id}`); // Creamos la funcion que sirve para borrar cards dentro de OTRA y no por fuera ya que el mismo se crea dinamicamente al crearse el boton y antes no existe
         delButtom.onclick = () => {
-            removeMovie(movieCreated.id)
 
-            Toastify({
-                text: "Se elimino la película: " + movieCreated.name,
-                duration: 3000,
-                gravity: "top",
-                position: "right",
-                style: {
-                    background: "linear-gradient(160deg, #461ca8 10%, #6d0f0cb4 100%)",
-                },
-                onClick: function () {} // Callback after click
-            }).showToast();
+            Swal.fire({
+                title: '¿Seguro?',
+                text: "No podrás revertir esta acción",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'X',
+                confirmButtonText: 'Borrar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        '¡Hecho!',
+                        'La película fue borrada con exito',
+                        'success'
+                    )
+                    removeMovie(movieCreated.id)
 
+                    Toastify({
+                        text: "Se elimino la película: " + movieCreated.name,
+                        duration: 3000,
+                        gravity: "top",
+                        position: "right",
+                        style: {
+                            background: "linear-gradient(160deg, #461ca8 10%, #6d0f0cb4 100%)",
+                        },
+                        onClick: function () {} // Callback after click
+                    }).showToast();
+                }
+            })
         }; //llamamos a una funcion creada arriba pasandole como parametro lo que queremos borrar
     });
 }
