@@ -124,10 +124,17 @@ function formValidation(event) { //* creamos una funcion la cual nos sirve para 
 
         Toastify({
             text: "Se creo la película: " + movieName,
-            duration: 3000
+            duration: 3000,
+            gravity: "top",
+            position: "left",
+            style: {
+                background: "linear-gradient(120deg, #4815be 30%, #148181 100%)",
+            },
+            onClick: function () {} // Callback after click
         }).showToast();
 
         console.log(movieArray)
+
     } else if (movieRating <= 0) {
         Swal.fire({
             icon: 'error',
@@ -203,7 +210,21 @@ function generateMoviesHTML() {
 
         movieContainer.append(mCard); // El APPEND nos permitira insertar nuevos elementos / nodos a uno existente similar a un PUSH
         let delButtom = document.getElementById(`delButtom-${movieCreated.id}`); // Creamos la funcion que sirve para borrar cards dentro de OTRA y no por fuera ya que el mismo se crea dinamicamente al crearse el boton y antes no existe
-        delButtom.onclick = () => removeMovie(movieCreated.id); //llamamos a una funcion creada arriba pasandole como parametro lo que queremos borrar
+        delButtom.onclick = () => {
+            removeMovie(movieCreated.id)
+
+            Toastify({
+                text: "Se elimino la película: " + movieCreated.name,
+                duration: 3000,
+                gravity: "top",
+                position: "left",
+                style: {
+                    background: "linear-gradient(160deg, #461ca8 10%, #6d0f0cb4 100%)",
+                },
+                onClick: function () {} // Callback after click
+            }).showToast();
+
+        }; //llamamos a una funcion creada arriba pasandole como parametro lo que queremos borrar
     });
 }
 
