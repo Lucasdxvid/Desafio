@@ -217,7 +217,7 @@ function generateMoviesHTML() {
                 text: "Se elimino la película: " + movieCreated.name,
                 duration: 3000,
                 gravity: "top",
-                position: "left",
+                position: "right",
                 style: {
                     background: "linear-gradient(160deg, #461ca8 10%, #6d0f0cb4 100%)",
                 },
