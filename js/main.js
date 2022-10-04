@@ -36,6 +36,8 @@ let inputImage;
 let movieContainer;
 let outpout; // Slider y Output son variables del input range
 let slider;
+let resetBtn;
+let submitBtn;
 
 //! [1.1] Constructor de películas (codigo)
 
@@ -63,6 +65,8 @@ function startElements() { //* inicializamos todos los elementos para utilizarse
     inputImage = document.getElementById("inputImage");
     movieContainer = document.getElementById("movieContainer");
     outpout = document.getElementById("ratingValue");
+    resetBtn = document.getElementById("resetBtn");
+    submitBtn = document.getElementById("submitBtn")
 
     //? Storage
 
@@ -77,11 +81,26 @@ function startEvents() { //* inicializamos eventos a utilizar
 
     //? FORM
 
-    movieForm.onsubmit = (event) => formValidation(event);
+    movieForm.onsubmit = (event) => {
+        formValidation(event)
+        outpout.innerHTML = "0"
+        Toastify({
+
+            text: "This is a toast",
+
+            duration: 3000
+
+        }).showToast();
+    };
     cleanStorage.onclick = deleteStorage;
 
     slider = document.getElementById("inputRating").oninput = function () { // El evento "oninput" se ejecuta cuando un usuario escriba algo en un campo <input>
         outpout.innerHTML = this.value; // El valor generado en el input de tipo "rango" se vera reflejado visualmente en el span ya que la prop. InnerHTML nos permitira modificar el codigo del elemento HTML
+    }
+
+    resetBtn.onclick = function () {
+        inputRating.value = 0
+        outpout.innerHTML = "0" // al usar el boton para resetear el formulario y el boton de submit, hacemos que el valor del input rating vuelva a 0
     }
 }
 
