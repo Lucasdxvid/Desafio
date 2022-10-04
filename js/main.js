@@ -38,6 +38,7 @@ let outpout; // Slider y Output son variables del input range
 let slider;
 let resetBtn;
 let submitBtn;
+let formCheck = false
 
 //! [1.1] Constructor de películas (codigo)
 
@@ -83,15 +84,11 @@ function startEvents() { //* inicializamos eventos a utilizar
 
     movieForm.onsubmit = (event) => {
         formValidation(event)
-        outpout.innerHTML = "0"
-        Toastify({
-
-            text: "This is a toast",
-
-            duration: 3000
-
-        }).showToast();
+        if (formCheck === true) {
+            outpout.innerHTML = "0" // Evitamos que el rating vuelva a 0 si al darle submit no cumple con las condiciones para crear la película
+        }
     };
+
     cleanStorage.onclick = deleteStorage;
 
     slider = document.getElementById("inputRating").oninput = function () { // El evento "oninput" se ejecuta cuando un usuario escriba algo en un campo <input>
@@ -115,24 +112,39 @@ function formValidation(event) { //* creamos una funcion la cual nos sirve para 
     let movieImage = inputImage.value;
 
     const idExist = movieArray.some((movieCreated) => movieCreated.id === movieId);
-    const nameExist = movieArray.some((movieCreated) => movieCreated.name === movieName);
 
-    if (!idExist && !nameExist) { // si la ID no se repite estariamos cumpliendo con la condicion para poder crear la card
+    if (!idExist && movieRating > 0) { // si la ID no se repite estariamos cumpliendo con la condicion para poder crear la card
         let movieCreated = new MovieBuilder(movieId, movieName, movieGenre, movieRating, movieImage);
-
+        formCheck = true
         movieArray.push(movieCreated); // pusheamos el array a crear utilizando la variable - array "movieArray" que creamos en la linea 3
         movieForm.reset(); // Al darle a SUBMIT el formulario no se limpia, con este METODO logramos que el mismo de RESETEE
 
         movieStorageUpdate();
         generateMoviesHTML(); // llamamos la funcion que creamos mas abajo la cual generara las cards en el HTML y tiene que ser llamada aqui debido a que se ejecutara CADA VEZ que creemos una card
+
+        Toastify({
+            text: "Se creo la película: " + movieName,
+            duration: 3000
+        }).showToast();
+
         console.log(movieArray)
-    } else {
+    } else if (movieRating <= 0) {
         Swal.fire({
             icon: 'error',
             title: '¡ERROR!',
-            text: 'La ID ya fue utilizada o el nombre de la película ya se encuentra en uso',
+            text: 'El rating de la película tiene que ser mayor a 0',
             footer: 'Intentalo nuevamente'
+        });
+        formCheck = false
+
+    } else if (idExist) {
+        Swal.fire({
+            icon: 'error',
+            title: '¡ERROR!',
+            text: 'La ID de la película ya fue utilizada',
+            footer: 'Intenta probar con otra ID'
         }); // si no se cumple con la condicion nos devolvera un alert hasta que lo hagamos correctamente
+        formCheck = false
     }
 }
 
