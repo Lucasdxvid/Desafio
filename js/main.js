@@ -71,8 +71,6 @@ function startElements() { //* inicializamos todos los elementos para utilizarse
     //? Storage
 
     cleanStorage = document.getElementById("cleanStorage");
-
-    //? USER REGISTER / LOGIN (Proceso...) 
 }
 
 //! [1.3] Inicializacion de eventos
