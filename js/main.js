@@ -9,7 +9,7 @@ let cleanStorage; // Nos permitira limpiar todos los nodos / arrays almacenados
 //? VARS de información (Arrays - etc.)
 
 let movieArray = []; // Aqui se almacenan las peliculas creadas
-let mCard
+let mCard // Es donde se almacena las películas creadas via DOM
 
 //? VARS de autentificación y usuario
 
@@ -193,6 +193,7 @@ function randomValue() {
     } else if (imgValue == 4) {
         randomImg = "img/index/imgCard5.jpg"
     }
+    
     return
 }
 
