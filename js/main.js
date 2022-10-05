@@ -176,24 +176,24 @@ function removeMovie(movieId) { //* creamos la funcion que nos permitira borrar 
 
 //! [1.6] Generandor de valores aleatorios (Imagenes randoms al crear una película)
 
-function randomValue() {
+// function randomValue() {
 
-    imgValue = Math.floor(Math.random() * 5);
+//     imgValue = Math.floor(Math.random() * 5);
 
-    if (imgValue == 0) {
-        randomImg = "img/index/imgCard0.jpg"
-    } else if (imgValue == 1) {
-        randomImg = "img/index/imgCard1.jpg"
-    } else if (imgValue == 2) {
-        randomImg = "img/index/imgCard2.jpg"
-    } else if (imgValue == 3) {
-        randomImg = "img/index/imgCard3.jpg"
-    } else if (imgValue == 4) {
-        randomImg = "img/index/imgCard4.jpg"
-    }
-    
-    return
-}
+//     if (imgValue == 0) {
+//         randomImg = "img/index/imgCard0.jpg"
+//     } else if (imgValue == 1) {
+//         randomImg = "img/index/imgCard1.jpg"
+//     } else if (imgValue == 2) {
+//         randomImg = "img/index/imgCard2.jpg"
+//     } else if (imgValue == 3) {
+//         randomImg = "img/index/imgCard3.jpg"
+//     } else if (imgValue == 4) {
+//         randomImg = "img/index/imgCard4.jpg"
+//     }
+
+//     return
+// }
 
 //! [1.7] Creacion de películas con DOM (interaccion HTML)
 
@@ -205,25 +205,35 @@ function generateMoviesHTML() {
 
         if (movieCreated.genre === "Terror") { // al crear obtendremos 2 clases, 1ra es global "movieCard" la cual da estilo a TODAS
             mCard.className = "movieCard horrorCard"
+            randomImg = "img/index/imgCard0.jpg"
         } else if (movieCreated.genre === "Romance") { // la segunda clase es exclusiva de cada card de acuerdo a que valor en el select de "genero" 
             mCard.className = "movieCard romanceCard"
+            randomImg = "img/index/imgCard1.jpg"
         } else if (movieCreated.genre === "Suspenso") {
             mCard.className = "movieCard suspenseCard"
+            randomImg = "img/index/imgCard2.jpg"
         } else if (movieCreated.genre === "Comedia") { // Esta clase secundaria "exclusiva" nos serviran para crear filtros más adelante
             mCard.className = "movieCard comedyCard"
+            randomImg = "img/index/imgCard3.jpg"
         } else if (movieCreated.genre === "Acción") {
             mCard.className = "movieCard actionCard"
+            randomImg = "img/index/imgCard.jpg"
         } else if (movieCreated.genre === "Ciencia Ficción") {
             mCard.className = "movieCard scienceFictionCard"
+            randomImg = "img/index/imgCard1.jpg"
         } else if (movieCreated.genre === "Musical") {
             mCard.className = "movieCard musicalCard"
+            randomImg = "img/index/imgCard2.jpg"
         } else if (movieCreated.genre === "Fantasía") {
             mCard.className = "movieCard fantasyCard"
+            randomImg = "img/index/imgCard3.jpg"
         } else if (movieCreated.genre === "Aventuras") {
             mCard.className = "movieCard adventureCard"
+            let x = Math.floor(Math.random() * 5);
+            randomImg = "img/index/imgCard4.jpg"
         }
 
-        randomValue() // Llamamos a la funcion que nos permitira obtener una imagen aleatoria
+        // randomValue() // Llamamos a la funcion que nos permitira obtener una imagen aleatoria
 
         mCard.id = `movieCard-${movieCreated.id}`; // tambien le asignaremos una ID la cual servira de referencia a la hora de ELIMINAR cards con otra funcion que recibira como nombre una ID ennumerada
         mCard.innerHTML = `
@@ -253,11 +263,14 @@ function generateMoviesHTML() {
                 confirmButtonText: 'Borrar'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    Swal.fire(
-                        '¡Hecho!',
-                        'La película fue borrada con exito',
-                        'success'
-                    )
+                    Swal.fire({
+                        title: '¡Hecho!',
+                        text: "La película fue borrada con exito",
+                        icon: 'success',
+                        color: '#ffffff',
+                        background: 'linear-gradient(150deg, #19366b 20%, #148181 80%)',
+                        confirmButtonColor: '#2d5ca3'
+                    })
                     removeMovie(movieCreated.id)
 
                     Toastify({
