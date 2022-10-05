@@ -11,6 +11,7 @@ const password = document.getElementById("password");
 const password2 = document.getElementById("password2");
 const mainSection = document.getElementById("mainSection");
 export const containerUser = document.getElementById("containerUser");
+export const sectionContainer = document.getElementById("mainSection");
 
 export let check1 = false; //Los checks vendran por defecto con un valor booleano "falso"
 export let check2 = false;
@@ -90,7 +91,9 @@ function validRegisterForm() { //* Creamos una validacion de formulario
             icon: 'success',
             title: '¡La cuenta ' + user.value + ' fue creada con exito!',
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
+            color: '#ffffff',
+            background: 'linear-gradient(150deg, #19366b 20%, #148181 80%)'
         })
         registerForm.classList.add("hiddeContent"); // Pasamos a ocultar el formulario de "REGISTRO" y visibilizamos el formulario de "LOGEO"
         loginForm.classList.remove("hiddeContent");
@@ -124,12 +127,15 @@ function validLoginForm() { //* Validamos el formulario de logeo
             icon: 'success',
             title: '¡Bienvenido ' + user.value + ' a eMovies!',
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
+            color: '#ffffff',
+            background: 'linear-gradient(150deg, #19366b 20%, #148181 80%)'
         })
 
         userStorageUpdate() // mandamos a llamar la funcion que retendra los valores true del check 5 y 6
         mainSection.classList.remove("hiddeContent");
         containerUser.classList.add("hiddeContent"); // Ocultamos la seccion de formularios de registro/logeo y pasamos a la creacion de cards
+        sectionContainer.classList.remove("filter")
     }
 }
 

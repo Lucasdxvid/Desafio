@@ -22,7 +22,8 @@ import {
     registerForm,
     loginForm,
     containerUser,
-    restartStorage
+    restartStorage,
+    sectionContainer
 } from "./user.js"
 
 //? VARS de formulario de películas
@@ -140,7 +141,10 @@ function formValidation(event) { //* creamos una funcion la cual nos sirve para 
             icon: 'error',
             title: '¡ERROR!',
             text: 'El rating de la película tiene que ser mayor a 0',
-            footer: 'Intentalo nuevamente'
+            footer: 'Intentalo nuevamente',
+            color: '#ffffff',
+            background: 'linear-gradient(150deg, #19366b 20%, #148181 80%)',
+            confirmButtonColor: '#2d5ca3'
         });
         formCheck = false
 
@@ -149,7 +153,10 @@ function formValidation(event) { //* creamos una funcion la cual nos sirve para 
             icon: 'error',
             title: '¡ERROR!',
             text: 'La ID de la película ya fue utilizada',
-            footer: 'Intenta probar con otra ID'
+            footer: 'Intenta probar con otra ID',
+            color: '#ffffff',
+            background: 'linear-gradient(150deg, #19366b 20%, #148181 80%)',
+            confirmButtonColor: '#2d5ca3'
         }); // si no se cumple con la condicion nos devolvera un alert hasta que lo hagamos correctamente
         formCheck = false
     }
@@ -267,17 +274,39 @@ function getMoviesFromStorage() { //* revertimos la transformacion a string
 //! [1.8] Limpieza de STORAGE
 
 function deleteStorage() { //* La misma nos permite eliminar TODO lo que almacenemos localmente
-    localStorage.clear(); // Metodo que nos permitira eliminar nuestro save local
-    movieArray = [];
+    Swal.fire({ //Aqui obligamos al usuario a confirmar su accion (en caso del que el mismo no quiera eliminar, puede cancelarlo)
+        title: '¿Estas seguro?',
+        text: "Tu cuenta sera eliminada y todo lo que hayas creado con ella",
+        icon: 'warning',
+        color: '#ffffff',
+        background: 'linear-gradient(150deg, #19366b 20%, #148181 80%)',
+        showCancelButton: true,
+        confirmButtonColor: '#2d5ca3',
+        cancelButtonColor: '#1b427c',
+        confirmButtonText: 'Borrar',
+        cancelButtonText: 'X'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+                '¡Borrado!',
+                'Tu cuenta y contenido fue borrado',
+                'success'
+            )
 
-    if (check1 == true || check2 == true || check3 == true || check4 == true || check5 == true || check6 == true) { // si se cumple la condicion, reseteamos el registro / logeo
-        registerForm.classList.remove("hiddeContent");
-        loginForm.classList.add("hiddeContent");
-        containerUser.classList.remove("hiddeContent");
-        restartStorage(); // llamamos la funcion exportada
-    }
+            localStorage.clear(); // Metodo que nos permitira eliminar nuestro save local
+            movieArray = [];
 
-    generateMoviesHTML(); // Actualizamos el resultado sin tener que recargar manualmente la pagina
+            if (check1 == true || check2 == true || check3 == true || check4 == true || check5 == true || check6 == true) { // si se cumple la condicion, reseteamos el registro / logeo
+                registerForm.classList.remove("hiddeContent");
+                loginForm.classList.add("hiddeContent");
+                containerUser.classList.remove("hiddeContent");
+                sectionContainer.classList.add("filter")
+                restartStorage(); // llamamos la funcion exportada
+            }
+
+            generateMoviesHTML(); // Actualizamos el resultado sin tener que recargar manualmente la pagina
+        }
+    })
 }
 
 //! [1.9] Punto de encuentro de las funciones
