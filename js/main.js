@@ -9,6 +9,8 @@ let cleanStorage; // Nos permitira limpiar todos los nodos / arrays almacenados
 //? VARS de información (Arrays - etc.)
 
 let movieArray = []; // Aqui se almacenan las peliculas creadas
+let mCard
+let movieCreated
 
 //? VARS de autentificación y usuario
 
@@ -33,23 +35,23 @@ let inputId;
 let inputName;
 let inputGenre; // Al declarar las variables de manera global puedo hacer referencias de funciones en otras
 let inputRating;
-let inputImage;
 let movieContainer;
 let outpout; // Slider y Output son variables del input range
 let slider;
 let resetBtn;
 let submitBtn;
 let formCheck = false
+let randomImg = "" // La misma recibira un valor aleatorio y de acuerdo a que salga se asignara una imagen al crear una película
+let imgValue
 
 //! [1.1] Constructor de películas (codigo)
 
 class MovieBuilder { //* Clase constructora utilizada a la hora de crear películas
-    constructor(id, name, genre, rating, image) {
+    constructor(id, name, genre, rating) {
         this.id = id;
         this.name = name.toLowerCase();
         this.genre = genre;
         this.rating = rating;
-        this.image = image;
     }
 }
 
@@ -64,7 +66,6 @@ function startElements() { //* inicializamos todos los elementos para utilizarse
     inputName = document.getElementById("inputName");
     inputGenre = document.getElementById("inputGenre");
     inputRating = document.getElementById("inputRating");
-    inputImage = document.getElementById("inputImage");
     movieContainer = document.getElementById("movieContainer");
     outpout = document.getElementById("ratingValue");
     resetBtn = document.getElementById("resetBtn");
@@ -110,12 +111,11 @@ function formValidation(event) { //* creamos una funcion la cual nos sirve para 
     let movieName = inputName.value; // de cada input necesitamos sacar su valor
     let movieGenre = inputGenre.value;
     let movieRating = parseFloat(inputRating.value);
-    let movieImage = inputImage.value;
 
     const idExist = movieArray.some((movieCreated) => movieCreated.id === movieId);
 
     if (!idExist && movieRating > 0) { // si la ID no se repite estariamos cumpliendo con la condicion para poder crear la card
-        let movieCreated = new MovieBuilder(movieId, movieName, movieGenre, movieRating, movieImage);
+        let movieCreated = new MovieBuilder(movieId, movieName, movieGenre, movieRating);
         formCheck = true
         movieArray.push(movieCreated); // pusheamos el array a crear utilizando la variable - array "movieArray" que creamos en la linea 3
         movieForm.reset(); // Al darle a SUBMIT el formulario no se limpia, con este METODO logramos que el mismo de RESETEE
@@ -177,12 +177,34 @@ function removeMovie(movieId) { //* creamos la funcion que nos permitira borrar 
     movieStorageUpdate() // Llamamos a la funcion que almacena nuestras cards para mantenerla al lado de nuestro dom y array sobreescribiendo asi la card
 }
 
+//! [1.6] Generandor de valores aleatorios (Imagenes randoms al crear una película)
+
+function randomValue() {
+
+    imgValue = Math.floor(Math.random() * 5);
+
+    if (imgValue == 0) {
+        randomImg = "img/index/imgCard1.jpg"
+    } else if (imgValue == 1) {
+        randomImg = "img/index/imgCard2.jpg"
+    } else if (imgValue == 2) {
+        randomImg = "img/index/imgCard3.jpg"
+    } else if (imgValue == 3) {
+        randomImg = "img/index/imgCard4.jpg"
+    } else if (imgValue == 4) {
+        randomImg = "img/index/imgCard5.jpg"
+    }
+}
+
+//! [1.7] Variantes en las cards acorde al genero
+
 //! [1.6] Creacion de películas con DOM (interaccion HTML)
 
 function generateMoviesHTML() {
     movieContainer.innerHTML = ""; // Al crear una película y luego otra por default va a volver el producto anteriormente creado + el nuevo es por eso que el innerHTML reemplazara al mismo evitando crear 2 veces lo mismo que ademas es donde llamaremos a crear las cards en el HTML
     movieArray.forEach((movieCreated) => { // vamos a recibir una película
-        let mCard = document.createElement("figure"); // usamos la propiedad createElement para crear una figure
+        mCard = document.createElement("figure"); // usamos la propiedad createElement para crear una figure
+        mCard.className = ""
 
         if (movieCreated.genre === "Terror") { // al crear obtendremos 2 clases, 1ra es global "movieCard" la cual da estilo a TODAS
             mCard.className = "movieCard horrorCard"
@@ -204,10 +226,12 @@ function generateMoviesHTML() {
             mCard.className = "movieCard adventureCard"
         }
 
+        randomValue() // Llamamos a la funcion que nos permitira obtener una imagen aleatoria
+
         mCard.id = `movieCard-${movieCreated.id}`; // tambien le asignaremos una ID la cual servira de referencia a la hora de ELIMINAR cards con otra funcion que recibira como nombre una ID ennumerada
         mCard.innerHTML = `
                 <h3 class="movieTitle">Película</h3>
-                <img src="${movieCreated.image}" alt="película" class="imgCard">
+                <img src="${randomImg}" alt="película" class="imgCard">
                 <p class="movieText">ID: <b class="movieTextBold">${movieCreated.id}</b></p>
                 <p class="movieText">Nombre: <b class="movieTextBold">${movieCreated.name}</b></p>
                 <p class="movieText">Género: <b class="movieTextBold">${movieCreated.genre}</b></p>
@@ -224,8 +248,10 @@ function generateMoviesHTML() {
                 text: "No podrás revertir esta acción",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
+                color: '#ffffff',
+                confirmButtonColor: '#2d5ca3',
+                cancelButtonColor: '#1b427c',
+                background: 'linear-gradient(150deg, #19366b 20%, #148181 80%)',
                 cancelButtonText: 'X',
                 confirmButtonText: 'Borrar'
             }).then((result) => {
