@@ -191,8 +191,19 @@ function removeMovie(movieId) { //* creamos la funcion que nos permitira borrar 
 //     } else if (imgValue == 4) {
 //         randomImg = "img/index/imgCard4.jpg"
 //     }
+// }
 
-//     return
+// function randomValueStorageUpdate() { //* Almacenamos / guardamos nuestros valores booleanos (check 5 y 6) de manera local
+//     let rValueJson = JSON.stringify(randomImg); // La pasamos a String
+
+//     localStorage.setItem("randomValue", rValueJson); // Almacenamos la misma
+// }
+
+// function getRandomValueInfoFromStorage() { //* Revertimos la transformacion a string para que al recargar la pagina, no se ejecute el formulario de registro / logeo
+
+//     let rValueJson = localStorage.getItem("randomValue"); // seleccionamos la clave a usar
+
+//     randomImg = JSON.parse(rValueJson); // Usamos el metodo parse para revertir el mismo
 // }
 
 //! [1.7] Creacion de películas con DOM (interaccion HTML)
@@ -205,33 +216,35 @@ function generateMoviesHTML() {
 
         if (movieCreated.genre === "Terror") { // al crear obtendremos 2 clases, 1ra es global "movieCard" la cual da estilo a TODAS
             mCard.className = "movieCard horrorCard"
-            randomImg = "img/index/imgCard0.jpg"
+            randomImg = "img/index/horror1.jpg"
         } else if (movieCreated.genre === "Romance") { // la segunda clase es exclusiva de cada card de acuerdo a que valor en el select de "genero" 
             mCard.className = "movieCard romanceCard"
-            randomImg = "img/index/imgCard1.jpg"
+            randomImg = "img/index/romance1.jpg"
         } else if (movieCreated.genre === "Suspenso") {
             mCard.className = "movieCard suspenseCard"
-            randomImg = "img/index/imgCard2.jpg"
+            randomImg = "img/index/suspense1.jpg"
         } else if (movieCreated.genre === "Comedia") { // Esta clase secundaria "exclusiva" nos serviran para crear filtros más adelante
             mCard.className = "movieCard comedyCard"
-            randomImg = "img/index/imgCard3.jpg"
+            randomImg = "img/index/comedy1.jpg"
         } else if (movieCreated.genre === "Acción") {
             mCard.className = "movieCard actionCard"
-            randomImg = "img/index/imgCard.jpg"
+            randomImg = "img/index/action1.jpg"
         } else if (movieCreated.genre === "Ciencia Ficción") {
             mCard.className = "movieCard scienceFictionCard"
-            randomImg = "img/index/imgCard1.jpg"
+            randomImg = "img/index/fiction1.jpg"
         } else if (movieCreated.genre === "Musical") {
             mCard.className = "movieCard musicalCard"
-            randomImg = "img/index/imgCard2.jpg"
+            randomImg = "img/index/musical1.jpg"
         } else if (movieCreated.genre === "Fantasía") {
             mCard.className = "movieCard fantasyCard"
-            randomImg = "img/index/imgCard3.jpg"
+            randomImg = "img/index/fantasy1.jpg"
         } else if (movieCreated.genre === "Aventuras") {
             mCard.className = "movieCard adventureCard"
-            let x = Math.floor(Math.random() * 5);
-            randomImg = "img/index/imgCard4.jpg"
+            randomImg = "img/index/adventure1.jpg"
         }
+
+        // randomValueStorageUpdate()
+        // randomValue()
 
         // randomValue() // Llamamos a la funcion que nos permitira obtener una imagen aleatoria
 
@@ -351,6 +364,7 @@ function main() { //* juntamos a la funciones que contienen los elementos y even
     startElements();
     startEvents();
     getMoviesFromStorage(); // Llamamos a la funcion que almacena sobrescribiendo a la que crea cards
+    // getRandomValueInfoFromStorage();
 }
 
 //! [2.1] Llamada principal
