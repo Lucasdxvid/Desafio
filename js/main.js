@@ -40,6 +40,7 @@ let slider;
 let resetBtn;
 let formCheck = false
 let randomImg = "" // La misma recibira un valor aleatorio y de acuerdo a que salga se asignara una imagen al crear una película
+let checkboxList = document.querySelectorAll(".checkFilter");
 // let imgValue
 
 //! [1.1] Constructor de películas (codigo)
@@ -71,6 +72,10 @@ function startElements() { //* inicializamos todos los elementos para utilizarse
     //? Storage
 
     cleanStorage = document.getElementById("cleanStorage");
+
+    //? Filtro
+
+    checkboxList = document.querySelectorAll(".checkFilter");
 }
 
 //! [1.3] Inicializacion de eventos
@@ -83,6 +88,9 @@ function startEvents() { //* inicializamos eventos a utilizar
         formValidation(event)
         if (formCheck === true) {
             outpout.innerHTML = "0" // Evitamos que el rating vuelva a 0 si al darle submit no cumple con las condiciones para crear la película
+            for (const box of checkboxList) {
+                box.classList.remove('uncheckFilter');
+            }
         }
     };
 

@@ -66,6 +66,10 @@ const adventureCheck = document.querySelector("#adventureCheck");
 let adventureLab = document.querySelector(".adventureLab");
 let adventureGenre = document.getElementsByClassName("adventureCard");
 
+const allCheck = document.querySelector("#allCheck");
+let labAll = document.querySelector(".labAll")
+let allGenres = document.querySelectorAll(".movieCard")
+
 //! [2.1] Declaracion de eventos
 
 function filterEvents() { //* Llamos al evento change en cada checkbox el cual nos permitira reaccionar a cambios (checked, unchecked)
@@ -78,6 +82,8 @@ function filterEvents() { //* Llamos al evento change en cada checkbox el cual n
     musicalCheck.addEventListener("change", () => filterItem(musicalCheck, musicalGenre, musicalLab));
     fantasyCheck.addEventListener("change", () => filterItem(fantasyCheck, fantasyGenre, fantasyLab));
     adventureCheck.addEventListener("change", () => filterItem(adventureCheck, adventureGenre, adventureLab)); // la funcion filterItem sera las que nos permita filtrar cada elemento en el DOM via checks
+
+    allCheck.addEventListener("change", () => filterAllItem(allCheck, allGenres, labAll));
 }
 
 //! [2.2] Funcion de filtro por medio de checks
@@ -89,12 +95,52 @@ function filterItem(inputCheck, genre, label) { //* La funcion se llevara a cabo
         for (const el of genre) { //Recorremos las cards de acuerdo a su genero (class)
             el.classList.add('filter'); // Las cards que coincidan con la class se les asignara otra la cual deshabilita la misma (display: none), es decir que no es visible
             label.classList.add("uncheckFilter"); // El usuario vera el texto de color gris, indicandole de manera intutuitiva que tiene que "uncheckear" para ver las cards nuevamente
+            inputCheck.checked = true
         }
     } else { // Aqui hace lo contrario que arriba, es decir que al dar "uncheck" se podran ver las cards nuevamente
         for (const el of genre) {
             el.classList.remove('filter');
             label.classList.remove("uncheckFilter");
+            inputCheck.checked = false
         }
+    }
+};
+
+function filterAllItem(inputCheck, genre, label) {
+
+    if (inputCheck.checked) {
+        for (const el of genre) {
+            el.classList.add('filter');
+            label.classList.add("uncheckFilter");
+            inputCheck.checked = true
+        }
+
+        horrorLab.classList.add("filter");
+        romanceLab.classList.add("filter");
+        suspenseLab.classList.add("filter");
+        comedyLab.classList.add("filter");
+        actionLab.classList.add("filter");
+        cienceLab.classList.add("filter");
+        musicalLab.classList.add("filter");
+        fantasyLab.classList.add("filter");
+        adventureLab.classList.add("filter");
+
+    } else {
+        for (const el of genre) {
+            el.classList.remove('filter');
+            label.classList.remove("uncheckFilter");
+
+        }
+
+        horrorLab.classList.remove("filter", "uncheckFilter");
+        romanceLab.classList.remove("filter", "uncheckFilter");
+        suspenseLab.classList.remove("filter", "uncheckFilter");
+        comedyLab.classList.remove("filter", "uncheckFilter");
+        actionLab.classList.remove("filter", "uncheckFilter");
+        cienceLab.classList.remove("filter", "uncheckFilter");
+        musicalLab.classList.remove("filter", "uncheckFilter");
+        fantasyLab.classList.remove("filter", "uncheckFilter");
+        adventureLab.classList.remove("filter", "uncheckFilter");
     }
 };
 
