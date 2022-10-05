@@ -38,7 +38,6 @@ let movieContainer;
 let outpout; // Slider y Output son variables del input range
 let slider;
 let resetBtn;
-let submitBtn;
 let formCheck = false
 let randomImg = "" // La misma recibira un valor aleatorio y de acuerdo a que salga se asignara una imagen al crear una película
 let imgValue
@@ -68,7 +67,6 @@ function startElements() { //* inicializamos todos los elementos para utilizarse
     movieContainer = document.getElementById("movieContainer");
     outpout = document.getElementById("ratingValue");
     resetBtn = document.getElementById("resetBtn");
-    submitBtn = document.getElementById("submitBtn")
 
     //? Storage
 
