@@ -27,6 +27,20 @@ import {
     sectionContainer
 } from "./user.js"
 
+//? VARS de filtro
+
+import {
+    horrorLab,
+    romanceLab,
+    suspenseLab,
+    comedyLab,
+    actionLab,
+    cienceLab,
+    musicalLab,
+    fantasyLab,
+    adventureLab
+} from "./filter.js"
+
 //? VARS de formulario de películas
 
 let movieForm;
@@ -90,6 +104,15 @@ function startEvents() { //* inicializamos eventos a utilizar
             outpout.innerHTML = "0" // Evitamos que el rating vuelva a 0 si al darle submit no cumple con las condiciones para crear la película
             for (const box of checkboxList) {
                 box.classList.remove('uncheckFilter');
+                horrorLab.classList.remove("filter", "uncheckFilter");
+                romanceLab.classList.remove("filter", "uncheckFilter");
+                suspenseLab.classList.remove("filter", "uncheckFilter");
+                comedyLab.classList.remove("filter", "uncheckFilter");
+                actionLab.classList.remove("filter", "uncheckFilter");
+                cienceLab.classList.remove("filter", "uncheckFilter");
+                musicalLab.classList.remove("filter", "uncheckFilter");
+                fantasyLab.classList.remove("filter", "uncheckFilter");
+                adventureLab.classList.remove("filter", "uncheckFilter");
             }
         }
     };

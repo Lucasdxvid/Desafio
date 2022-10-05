@@ -31,43 +31,43 @@ function searchFilter(input, selector) { //* La funcion nos pide 2 parametros, 1
 //? Input filtrador, label y elemento a filtrar
 
 const horrorCheck = document.querySelector("#horrorCheck"); // input: es de tipo check el cual sera una condicion para filtrar
-let horrorLab = document.querySelector(".horrorLab"); // Label: es el texto visible el cual estara ligado al checkbox donde el usuario podra "checkear" o "uncheckear" el contenido
+export let horrorLab = document.querySelector(".horrorLab"); // Label: es el texto visible el cual estara ligado al checkbox donde el usuario podra "checkear" o "uncheckear" el contenido
 let horrorGenre = document.getElementsByClassName("horrorCard") // Elemento: La card sera filtrada de acuerdo al "genero de película" que el mismo posea
 
 const romanceCheck = document.querySelector("#romanceCheck");
-let romanceLab = document.querySelector(".romanceLab");
+export let romanceLab = document.querySelector(".romanceLab");
 let romanceGenre = document.getElementsByClassName("romanceCard");
 
 const suspenseCheck = document.querySelector("#suspenseCheck");
-let suspenseLab = document.querySelector(".suspenseLab");
+export let suspenseLab = document.querySelector(".suspenseLab");
 let suspenseGenre = document.getElementsByClassName("suspenseCard");
 
 const comedyCheck = document.querySelector("#comedyCheck");
-let comedyLab = document.querySelector(".comedyLab");
+export let comedyLab = document.querySelector(".comedyLab");
 let comedyGenre = document.getElementsByClassName("comedyCard");
 
 const actionCheck = document.querySelector("#actionCheck");
-let actionLab = document.querySelector(".actionLab");
+export let actionLab = document.querySelector(".actionLab");
 let actionGenre = document.getElementsByClassName("actionCard");
 
 const cienceCheck = document.querySelector("#cienceCheck");
-let cienceLab = document.querySelector(".cienceLab");
+export let cienceLab = document.querySelector(".cienceLab");
 let cienceFictionGenre = document.getElementsByClassName("scienceFictionCard");
 
 const musicalCheck = document.querySelector("#musicalCheck");
-let musicalLab = document.querySelector(".musicalLab");
+export let musicalLab = document.querySelector(".musicalLab");
 let musicalGenre = document.getElementsByClassName("musicalCard");
 
 const fantasyCheck = document.querySelector("#fantasyCheck");
-let fantasyLab = document.querySelector(".fantasyLab");
+export let fantasyLab = document.querySelector(".fantasyLab");
 let fantasyGenre = document.getElementsByClassName("fantasyCard");
 
 const adventureCheck = document.querySelector("#adventureCheck");
-let adventureLab = document.querySelector(".adventureLab");
+export let adventureLab = document.querySelector(".adventureLab");
 let adventureGenre = document.getElementsByClassName("adventureCard");
 
 const allCheck = document.querySelector("#allCheck");
-let labAll = document.querySelector(".labAll");
+export let labAll = document.querySelector(".labAll");
 let allGenres = document.getElementsByClassName("movieCard");
 
 //! [2.1] Declaracion de eventos
