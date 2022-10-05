@@ -183,15 +183,15 @@ function randomValue() {
     imgValue = Math.floor(Math.random() * 5);
 
     if (imgValue == 0) {
-        randomImg = "img/index/imgCard1.jpg"
+        randomImg = "img/index/imgCard0.jpg"
     } else if (imgValue == 1) {
-        randomImg = "img/index/imgCard2.jpg"
+        randomImg = "img/index/imgCard1.jpg"
     } else if (imgValue == 2) {
-        randomImg = "img/index/imgCard3.jpg"
+        randomImg = "img/index/imgCard2.jpg"
     } else if (imgValue == 3) {
-        randomImg = "img/index/imgCard4.jpg"
+        randomImg = "img/index/imgCard3.jpg"
     } else if (imgValue == 4) {
-        randomImg = "img/index/imgCard5.jpg"
+        randomImg = "img/index/imgCard4.jpg"
     }
     
     return
