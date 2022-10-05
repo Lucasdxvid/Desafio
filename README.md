@@ -1,4 +1,4 @@
-# DESAFIO-NRO-6-JavaScript
+# DESAFIO-JavaScript
 
 Con los conocimientos vistos hasta el momento, incorpore lo necesario para completar el desafío.
 
