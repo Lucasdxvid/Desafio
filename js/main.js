@@ -40,7 +40,7 @@ let slider;
 let resetBtn;
 let formCheck = false
 let randomImg = "" // La misma recibira un valor aleatorio y de acuerdo a que salga se asignara una imagen al crear una película
-let imgValue
+// let imgValue
 
 //! [1.1] Constructor de películas (codigo)
 
