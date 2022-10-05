@@ -67,8 +67,8 @@ let adventureLab = document.querySelector(".adventureLab");
 let adventureGenre = document.getElementsByClassName("adventureCard");
 
 const allCheck = document.querySelector("#allCheck");
-let labAll = document.querySelector(".labAll")
-let allGenres = document.querySelectorAll(".movieCard")
+let labAll = document.querySelector(".labAll");
+let allGenres = document.getElementsByClassName("movieCard");
 
 //! [2.1] Declaracion de eventos
 
