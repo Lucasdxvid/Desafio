@@ -10,7 +10,6 @@ let cleanStorage; // Nos permitira limpiar todos los nodos / arrays almacenados
 
 let movieArray = []; // Aqui se almacenan las peliculas creadas
 let mCard
-let movieCreated
 
 //? VARS de autentificación y usuario
 
@@ -194,11 +193,10 @@ function randomValue() {
     } else if (imgValue == 4) {
         randomImg = "img/index/imgCard5.jpg"
     }
+    return
 }
 
-//! [1.7] Variantes en las cards acorde al genero
-
-//! [1.6] Creacion de películas con DOM (interaccion HTML)
+//! [1.7] Creacion de películas con DOM (interaccion HTML)
 
 function generateMoviesHTML() {
     movieContainer.innerHTML = ""; // Al crear una película y luego otra por default va a volver el producto anteriormente creado + el nuevo es por eso que el innerHTML reemplazara al mismo evitando crear 2 veces lo mismo que ademas es donde llamaremos a crear las cards en el HTML
@@ -279,7 +277,7 @@ function generateMoviesHTML() {
     });
 }
 
-//! [1.7] Almacenamiento de datos locales 
+//! [1.8] Almacenamiento de datos locales 
 
 //? Movies Storage
 
@@ -297,7 +295,7 @@ function getMoviesFromStorage() { //* revertimos la transformacion a string
     }
 }
 
-//! [1.8] Limpieza de STORAGE
+//! [1.9] Limpieza de STORAGE
 
 function deleteStorage() { //* La misma nos permite eliminar TODO lo que almacenemos localmente
     Swal.fire({ //Aqui obligamos al usuario a confirmar su accion (en caso del que el mismo no quiera eliminar, puede cancelarlo)
@@ -335,7 +333,7 @@ function deleteStorage() { //* La misma nos permite eliminar TODO lo que almacen
     })
 }
 
-//! [1.9] Punto de encuentro de las funciones
+//! [2.0] Punto de encuentro de las funciones
 
 function main() { //* juntamos a la funciones que contienen los elementos y eventos
     startElements();
@@ -343,6 +341,6 @@ function main() { //* juntamos a la funciones que contienen los elementos y even
     getMoviesFromStorage(); // Llamamos a la funcion que almacena sobrescribiendo a la que crea cards
 }
 
-//! [2.0] Llamada principal
+//! [2.1] Llamada principal
 
 main(); // Mandamos a llamar a la funcion principal
