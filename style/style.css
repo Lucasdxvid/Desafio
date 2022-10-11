@@ -139,7 +139,7 @@ body {
 
 /* Card Creator (JS DOM) */
 
-#movieContainer {
+#movieContainer, #movieApiContainer {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

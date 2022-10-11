@@ -9,7 +9,9 @@ let cleanStorage; // Nos permitira limpiar todos los nodos / arrays almacenados
 //? VARS de información (Arrays - etc.)
 
 let movieArray = []; // Aqui se almacenan las peliculas creadas
+let movieFromApi = []
 let mCard // Es donde se almacena las películas creadas via DOM
+let xCard // Es donde se almacena las películas creadas via DOM (APIS)
 
 //? VARS de autentificación y usuario
 
@@ -49,6 +51,7 @@ let inputName;
 let inputGenre; // Al declarar las variables de manera global puedo hacer referencias de funciones en otras
 let inputRating;
 let movieContainer;
+let movieApiContainer;
 let outpout; // Slider y Output son variables del input range
 let slider;
 let resetBtn;
@@ -80,6 +83,7 @@ function startElements() { //* inicializamos todos los elementos para utilizarse
     inputGenre = document.getElementById("inputGenre");
     inputRating = document.getElementById("inputRating");
     movieContainer = document.getElementById("movieContainer");
+    movieApiContainer = document.getElementById("movieApiContainer");
     outpout = document.getElementById("ratingValue");
     resetBtn = document.getElementById("resetBtn");
 
@@ -387,13 +391,49 @@ function deleteStorage() { //* La misma nos permite eliminar TODO lo que almacen
     })
 }
 
+async function moviesFromMockApi() { //la expresion await solo esta permitida en funciones asincronas, con el async forzamos a que sea asincrona
+    try { // Cuando el interprete lea la informacion detectara el await y sabra a que tiene que esperar a que la respuesta suceda
+        //? Luego de esperar esa respuesta, lo asignara a la variable creada
+        const response = await fetch("https://63446770dcae733e8fdea4c7.mockapi.io/movies")
+        const data = await response.json() // de la misma manera tiene que hacer un await de la data
+        console.log(data)
+        movieFromApi = [...data]
+        generateMoviesApi();
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+function generateMoviesApi() {
+    movieApiContainer.innerHTML = ""; // Al crear una película y luego otra por default va a volver el producto anteriormente creado + el nuevo es por eso que el innerHTML reemplazara al mismo evitando crear 2 veces lo mismo que ademas es donde llamaremos a crear las cards en el HTML
+    movieFromApi.forEach((movieCreated) => { // vamos a recibir una película
+        xCard = document.createElement("figure"); // usamos la propiedad createElement para crear una figure
+        xCard.className = "movieCard"
+
+        xCard.id = `movieCard-${movieCreated.id}`; // tambien le asignaremos una ID la cual servira de referencia a la hora de ELIMINAR cards con otra funcion que recibira como nombre una ID ennumerada
+        
+        xCard.innerHTML = `
+                <h3 class="movieTitle">Película</h3>
+                <img src="img/index/api.jpg" alt="película" class="imgCard">
+                <p class="movieText">ID: <b class="movieTextBold">${movieCreated.id}</b></p>
+                <p class="movieText">Nombre: <b class="movieTextBold">${movieCreated.name}</b></p>
+                <p class="movieText">Género: <b class="movieTextBold">${movieCreated.genre}</b></p>
+                <p class="movieText">Rating: <b class="movieTextBold">${movieCreated.rating}</b></p>
+             `; //definimos el cuerpo que tendra la card
+
+        movieApiContainer.append(xCard); // El APPEND nos permitira insertar nuevos elementos / nodos a uno existente similar a un PUSH
+
+    });
+}
+
+moviesFromMockApi()
+
 //! [2.0] Punto de encuentro de las funciones
 
 function main() { //* juntamos a la funciones que contienen los elementos y eventos
     startElements();
     startEvents();
     getMoviesFromStorage(); // Llamamos a la funcion que almacena sobrescribiendo a la que crea cards
-    // getRandomValueInfoFromStorage();
 }
 
 //! [2.1] Llamada principal
