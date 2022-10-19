@@ -6,5 +6,3 @@ Con los conocimientos vistos hasta el momento, incorpore lo necesario para cumpl
 *LocalStorage
 *Creacion de cards
 *Utilizacion de API (The Open Movie Database) 
-
-Preview del sitio: https://lucasdxvid.github.io/eMovies/
