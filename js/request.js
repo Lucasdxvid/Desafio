@@ -24,7 +24,7 @@ export default class Request { //* Creamos un constructor que obtendra las image
       display.displayUserCards();
     } catch (error) {
       const checker = new Checker();
-      checker.getErrorContainer("Movie not found!");
+      checker.getErrorContainer("Película no encontrada!");
     }
   }
 
