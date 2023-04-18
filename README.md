@@ -1,6 +1,6 @@
 # eMovies -JavaScript
 
-Con los conocimientos vistos hasta el momento, incorpore lo necesario para cumplir con la entrega final.
+Aplicación de búsqueda y obtención de títulos de película con puro JavaScript.
 
 *Inicio/Logeo
 *LocalStorage
