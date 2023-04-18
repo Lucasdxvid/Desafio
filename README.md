@@ -1,4 +1,4 @@
-# eMovies -JavaScript
+# eMovies - JavaScript
 
 Aplicación de búsqueda y obtención de títulos de película con puro JavaScript.
 
